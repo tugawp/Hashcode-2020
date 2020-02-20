@@ -19,8 +19,16 @@ class Library:
     def heuristic(self, bookValues):
         return self.sumBookValues(bookValues) / self.nSignupDays * self.nBooksPerSecond
 
+    '''
+    #
+    #Points_per_day * days_til_end
+    def heuristic2(self, bookvalues, n_days_remain):
+        return (self.sumBookValues(bookValues) / len(self.books) ) * self.nBooksPerSecond * (n_days_remain - self.nSignupDays)'''
+
+
     def biggerThanMinor(self, value, booksToSend, bookValues):
         minorValue = bookValues[booksToSend[0]]
+
         minorIndex = 0
 
         for i in range(1, len(booksToSend)):
