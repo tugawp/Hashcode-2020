@@ -13,6 +13,7 @@ def choose_library(libs, n_days_remain, bookValues):
         if lib.nSignupDays >= n_days_remain:
             continue
         h = lib.heuristic(bookValues)
+        # h = lib.heuristic2(bookValues, n_days_remain)
         if h > curr_max:
             curr_max = h
             max_lib_i = i
@@ -31,23 +32,25 @@ def main():
     signed_up_libs = []
     next_lib = None
     while day < n_days:
+        for lib in signed_up_libs:
+            lib.sendBooks(bookValues)
+
         if days_till_sign_up == 0:
             if next_lib:
                 signed_up_libs.append(next_lib)
+                next_lib.sendBooks(bookValues)
             days_till_sign_up, next_lib = choose_library(libraries, n_days - day, bookValues)
         day += 1
         days_till_sign_up -= 1
 
-        for lib in signed_up_libs:
-            lib.sendBooks(bookValues)
     # output
     print(str(len(signed_up_libs)))
     for lib in signed_up_libs:
         print(str(lib.idx), str(len(lib.booksSent)))
         line = ""
         for book in lib.booksSent:
-            line += str(book) + ", "
-        print(line[:-2])
+            line += str(book) + " "
+        print(line[:-1])
 
 
 if __name__ == "__main__":
