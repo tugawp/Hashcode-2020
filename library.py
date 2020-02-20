@@ -45,12 +45,12 @@ class Library:
         booksToSend = []
 
         for i in range(min(len(self.books), self.nBooksPerSecond)):
-            booksToSend += [i]
+            booksToSend += [self.books[i]]
 
         for i in range(min(len(self.books), self.nBooksPerSecond), len(self.books)):
             indexToReplace = self.biggerThanMinor(bookValues[i], booksToSend, bookValues) #returns the index of the minor value if smaller then the value of the current i, -1 otherwise
             if indexToReplace != -1:
-                booksToSend[indexToReplace] = i
+                booksToSend[indexToReplace] = self.books[i]
 
         for i in booksToSend: #So we don't send the same book again
             bookValues[i] = 0
