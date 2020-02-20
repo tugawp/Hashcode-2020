@@ -16,10 +16,23 @@ class Library:
     def heuristic(self):
         return self.sumBookValues() / self.nSignupDays * self.nBooksPerSecond
 
+    def biggerThanMinor(self, value):
+        minorValue = books
+        minorIndex = -1
+        
+        for 
+
+
+
+        return -1
+
     def sendBooks(self):
         booksToSend = []
+
         for i in range(nBooksPerSecond):
                 booksToSend += [i]
         
         for i in range(end, nBooks):
-            if biggerThanAny(books[i] > )
+            indexToReplace = biggerThanMinor(i, booksToSend)
+            if indexToReplace != -1:
+                booksToSend[indexToReplace] = i
