@@ -2,11 +2,12 @@ import main
 
 
 class Library:
-    def __init__(self, nSignupDays, nBooksPerDay, books):
+    def __init__(self, nSignupDays, nBooksPerDay, books, idx):
         self.nSignupDays = nSignupDays
         self.nBooksPerSecond = nBooksPerDay
         self.books = books
         self.booksSent = []
+        self.idx = idx
 
     def sumBookValues(self, bookValues):
         sm = 0

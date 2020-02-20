@@ -1,8 +1,11 @@
 from parse import parse
 import library
+import math
 
 
 def choose_library(libs, n_days_remain, bookValues):
+    if len(libs) == 0:
+        return math.inf, None
     curr_max = libs[0].heuristic(bookValues)
     max_lib_i = 0
     for i in range(len(libs)):
@@ -19,7 +22,10 @@ def choose_library(libs, n_days_remain, bookValues):
 
 def main():
     (n_days, bookValues, tup_libraries) = parse()
-    libraries = [library.Library(a, b, c) for (a, b, c) in tup_libraries]
+    libraries = []
+    for idx in range(len(tup_libraries)):
+        (a, b, c) = tup_libraries[idx]
+        libraries.append(library.Library(a, b, c, idx))
     day = 0
     days_till_sign_up = 0
     signed_up_libs = []
@@ -34,7 +40,16 @@ def main():
 
         for lib in signed_up_libs:
             lib.sendBooks(bookValues)
+    # output
+    print(str(len(signed_up_libs)))
+    for lib in signed_up_libs:
+        print(str(lib.idx), str(len(lib.booksSent)))
+        line = ""
+        for book in lib.booksSent:
+            line += str(book) + ", "
+        print(line[:-2])
 
 
 if __name__ == "__main__":
     main()
+
