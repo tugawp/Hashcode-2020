@@ -3,10 +3,10 @@ from main import books
 
 class Library:
     def __init__(self, nBooks, nSignupDays, nBooksPerSecond, books):
-        self.nBooks = B
-        self.nSignupDays = S
-        self.nBooksPerSecond = R
-        self.books = Bs
+        self.nBooks = nBooks
+        self.nSignupDays = nSignupDays
+        self.nBooksPerSecond = nBooksPerSecond
+        self.books = books
     
     def sumBookValues(self):
         sum = 0
