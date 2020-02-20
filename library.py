@@ -10,8 +10,11 @@ class Library:
 
     def sumBookValues(self):
         sum = 0
+        
         for i in self.books:
             sum += main.bookValues[i]
+        
+        return sum
 
     def heuristic(self):
         return self.sumBookValues() / self.nSignupDays * self.nBooksPerSecond
@@ -20,9 +23,9 @@ class Library:
         minorValue = main.bookValues[self.books[0]]
         minorIndex = 0
         
-        for i in range(1, nBooks):
+        for i in range(1, self.books.len()):
             if main.bookValues[self.books[i]] < minorValue:
-                minorValue =  main.bookValues[self.books[i]]
+                minorValue = main.bookValues[self.books[i]]
                 minorIndex = i
 
         if minorValue < value:
@@ -43,6 +46,7 @@ class Library:
         
         for i in booksToSend: #So we don't send the same book again
             main.bookValues[i] = 0
+            self.books.remove(i)
 
         self.sentBooks += booksToSend
 
