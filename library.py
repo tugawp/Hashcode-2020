@@ -18,10 +18,13 @@ class Library:
         return sm
 
     def heuristic(self, bookValues):
-        return self.sumBookValues(bookValues) / self.nSignupDays * self.nBooksPerSecond
+        return self.sumBookValues(bookValues) * self.nBooksPerSecond/ self.nSignupDays
 
-    def heuristic2(self, bookValues, n_days_remain):
-        return (self.sumBookValues(bookValues) / len(self.books) ) * self.nBooksPerSecond * (n_days_remain - self.nSignupDays)
+    def heuristic2(self, bookValues):
+        return self.sumBookValues(bookValues) / self.nSignupDays
+
+    def heuristic3(self, bookValues, n_days_remain):
+        return self.sumBookValues(bookValues) * len(self.books) * self.nBooksPerSecond * (n_days_remain - self.nSignupDays)
 
     def biggerThanMinor(self, value, booksToSend, bookValues):
         minorValue = bookValues[booksToSend[0]]

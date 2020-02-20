@@ -13,7 +13,7 @@ def choose_library(libs, n_days_remain, bookValues):
         if lib.nSignupDays >= n_days_remain:
             continue
         h = lib.heuristic(bookValues)
-        # h = lib.heuristic2(bookValues, n_days_remain)
+        #h = lib.heuristic(bookValues, n_days_remain)
         if h > curr_max:
             curr_max = h
             max_lib_i = i
