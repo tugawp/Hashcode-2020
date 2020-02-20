@@ -15,3 +15,11 @@ class Library:
 
     def heuristic(self):
         return self.sumBookValues() / self.nSignupDays * self.nBooksPerSecond
+
+    def sendBooks(self):
+        booksToSend = []
+        for i in range(nBooksPerSecond):
+                booksToSend += [i]
+        
+        for i in range(end, nBooks):
+            if biggerThanAny(books[i] > )
